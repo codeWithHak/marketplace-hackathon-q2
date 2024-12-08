@@ -103,7 +103,7 @@ const products: Product[] = [
   }
 ]
 
-export default function OurProducts() {
+export default function Products() {
   const [scrollPosition, setScrollPosition] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
