@@ -145,7 +145,7 @@ export default function Products() {
 
   return (
     <section className="py-16 md:py-24 px-4 font-poppins">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-[#3A3A3A] text-3xl md:text-4xl font-bold mb-4">
             Our Products

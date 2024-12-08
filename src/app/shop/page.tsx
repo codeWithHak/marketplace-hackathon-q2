@@ -306,7 +306,7 @@ export default function ShopHeader() {
                 : 'bg-[#F9F1E7] text-black hover:bg-[#B88E2F] hover:text-white'
               }`}
           >
-            {item.label}
+           <Link href='/product-details'>{item.label}</Link> 
           </button>
         ))}
       </div>

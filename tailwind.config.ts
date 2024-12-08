@@ -13,6 +13,7 @@ export default {
         foreground: "var(--foreground)",
         cream:'#FFF3E3',
         gray:'#3A3A3A',
+        lightGray:'#9F9F9F',
         brown:'#B88E2F'
       },
       fontFamily: {
