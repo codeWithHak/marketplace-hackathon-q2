@@ -313,11 +313,11 @@ export default function ShopHeader() {
 
       {/* Features */}
       <div className="w-full bg-[#FAF3EA] mx-auto px-4 py-16 my-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {features.map((feature) => (
             <div 
               key={feature.title} 
-              className="flex flex-col items-center text-center"
+              className="flex items-center gap-4 pl-8 md:pl-0"
             >
               <div className="mb-4">
                 <Image
@@ -328,12 +328,14 @@ export default function ShopHeader() {
                   quality={100}
                 />
               </div>
+              <div className='flex flex-col'>
               <h3 className="text-[#333333] text-xl font-semibold mb-2">
                 {feature.title}
               </h3>
               <p className="text-[#666666] text-base">
                 {feature.description}
               </p>
+              </div>
             </div>
           ))}
         </div>
