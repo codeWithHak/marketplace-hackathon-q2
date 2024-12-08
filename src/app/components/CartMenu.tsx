@@ -101,13 +101,13 @@ export default function CartMenu({ onClose }: CartMenuProps) {
         {/* Action buttons */}
         <div className="grid grid-cols-3 gap-4 mt-6">
             <Link href='/cart'>
-          <button className="w-full text-sm py-2 px-4">Cart</button>
+          <button className="w-full text-sm py-2 px-4" onClick={onClose}>Cart</button>
              </Link>
             <Link href='/checkout'>
-          <button className="w-full text-sm py-2 px-4">Checkout</button>
+          <button className="w-full text-sm py-2 px-4" onClick={onClose}>Checkout</button>
              </Link>
             <Link href='/comparison'>
-          <button className="w-full text-sm py-2 px-4">Comparison</button>
+          <button className="w-full text-sm py-2 px-4" onClick={onClose}>Comparison</button>
              </Link>
         </div>
       </div>

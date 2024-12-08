@@ -111,17 +111,17 @@ export default function Navbar() {
             isMenuOpen ? 'absolute ' : 'hidden'
           } pt-12 md:hidden top-0 bg-white z-40 h-[100vh] w-[80%]`}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-white">
-            <Link href="/" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-gray-600">
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-white " onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Link href="/" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-gray-600" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
-            <Link href="/shop" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-gray-600">
+            <Link href="/shop" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-gray-600" onClick={() => setIsMenuOpen(false)}>
               Shop
             </Link>
-            <Link href="/blog" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-gray-600">
+            <Link href="/blog" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-gray-600" onClick={() => setIsMenuOpen(false)}>
               Blog
             </Link>
-            <Link href="/contact" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-gray-600">
+            <Link href="/contact" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-gray-600" onClick={() => setIsMenuOpen(false)}>
               Contact
             </Link>
             <div className='pl-2 pt-3 flex gap-4'>
