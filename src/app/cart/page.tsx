@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { ChevronRight, Trash2 } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 
 const features = [
