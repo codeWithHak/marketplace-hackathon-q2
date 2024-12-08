@@ -74,7 +74,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
+      <div className={`${isMenuOpen ? 'absolute ' : 'hidden'} pt-12 md:hidden top-0 bg-white z-20 h-[50%] w-[80%]`}>
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link href="/" className="block px-3 py-2 text-base font-medium text-gray-800 hover:text-gray-600">
             Home
