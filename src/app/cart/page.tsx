@@ -29,7 +29,7 @@ export default function Cart() {
 
   return (
 <div className='overflow-hidden'>
-<div className="relative h-[300px] w-full">
+<div className="relative h-[280px] w-full">
         <Image
           src="/images/comparison-bg.png"
           alt="Comparison background"

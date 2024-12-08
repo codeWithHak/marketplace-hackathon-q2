@@ -138,7 +138,7 @@ export default function ShopHeader() {
     <section className="font-poppins">
       {/* Hero Section */}
 
-      <div className="relative h-[316px] w-full">
+      <div className="relative h-[300px] w-full">
         <Image
           src="/images/shop-cover.png"
           alt="Shop Cover"
@@ -147,7 +147,7 @@ export default function ShopHeader() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 " />
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">
             Shop
