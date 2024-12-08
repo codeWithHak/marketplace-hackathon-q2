@@ -301,7 +301,7 @@ export default function BlogPage() {
         </div>
   
         {/* Features */}
-        <div className="w-full bg-[#FAF3EA] mx-auto px-4 py-16 my-6">
+        <div className="w-full bg-[#FAF3EA] mx-auto px-4 py-16 my-6 pl-6 lg:pl-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {features.map((feature) => (
               <div 

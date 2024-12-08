@@ -167,14 +167,14 @@ export default function Checkout() {
         <div className="space-y-8">
           <div className="space-y-4">
             <div className="flex justify-between text-sm md:text-base">
-              <span>Product</span>
-              <span>Subtotal</span>
+              <span className='text-base lg:text-2xl font-poppinsSemiBold'>Product</span>
+              <span className='text-base lg:text-2xl font-poppinsSemiBold'>Subtotal</span>
             </div>
             
-            <div className="flex justify-between items-center py-4 border-y text-sm md:text-base">
+            <div className="flex justify-between items-center py-4  text-sm md:text-base">
               <div className="space-y-1">
-                <p>Asgaard sofa</p>
-                <p className="text-gray-500">x 1</p>
+                <p className=''><span className='text-lightGray'>Asgaard Sofa </span> x 1</p>
+                
               </div>
               <span>Rs. 250,000.00</span>
             </div>
@@ -186,7 +186,7 @@ export default function Checkout() {
 
             <div className="flex justify-between font-medium">
               <span>Total</span>
-              <span className="text-[#B88E2F]">Rs. 250,000.00</span>
+              <span className="text-brown lg:text-xl font-poppinsSemiBold">Rs. 250,000.00</span>
             </div>
           </div>
 
@@ -221,7 +221,7 @@ export default function Checkout() {
         </div>
       </div>
     </div>
-    <div className="w-full bg-[#FAF3EA] mx-auto px-4 py-16 mt-6">
+    <div className="w-full bg-[#FAF3EA] mx-auto px-4 py-16 mt-6 pl-6 lg:pl-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {features.map((feature) => (
             <div 
