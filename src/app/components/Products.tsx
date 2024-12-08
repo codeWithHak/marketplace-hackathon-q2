@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { Share2, Heart, BarChart2, ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface Product {
