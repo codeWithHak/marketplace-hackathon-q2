@@ -66,7 +66,7 @@ export default function Navbar() {
                 <Image src="/images/cart-icon.png" alt="Favorites" width={22} height={22} quality={100} />
               {counter?.cartCount !== null && counter?.cartCount > 0 &&(
             <span className="absolute -top-2 -right-2 bg-black text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-              { counter?.cartCount!}</span>)}
+              { counter?.cartCount ?? 0}</span>)}
               </button>
             </div>
 
