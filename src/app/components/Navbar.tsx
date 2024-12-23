@@ -1,13 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import CartMenu from './CartMenu';
+import {CounterContext} from '../contexts/CartCounter'
+
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartMenuOpen, setIsCartMenuOpen] = useState(false);
+  const counter = useContext(CounterContext)  
 
   const toggleCartMenu = () => {
     setIsCartMenuOpen((prev) => !prev);
@@ -15,7 +18,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-white shadow-md font-poppins relative">
+      <nav className="bg-white shadow-md font-poppins relative ">  
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             {/* Logo */}
@@ -57,11 +60,18 @@ export default function Navbar() {
                 className="text-gray-800 hover:text-gray-600 relative"
                 onClick={toggleCartMenu}
               >
+
+
+
                 <Image src="/images/cart-icon.png" alt="Favorites" width={22} height={22} quality={100} />
+              {counter?.cartCount !== null && counter?.cartCount > 0 &&(
             <span className="absolute -top-2 -right-2 bg-black text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-              2 </span>
+              { counter?.cartCount!}</span>)}
               </button>
             </div>
+
+
+
 
             {/* Mobile Menu Button */}
             <div className="flex items-center md:hidden">

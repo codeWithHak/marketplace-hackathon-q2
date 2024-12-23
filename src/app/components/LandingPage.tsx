@@ -6,6 +6,7 @@ import Rooms from './Rooms'
 import Furniture from './Furniture'
 
 
+
 function LandingPage() {
   return (
     <div>
@@ -14,6 +15,7 @@ function LandingPage() {
         <Products/>
         <Rooms/>
         <Furniture/>
+        
     </div>
   )
 }

@@ -15,17 +15,17 @@ const categories: CategoryCard[] = [
   {
     title: 'Dining',
     image: '/images/dining.png',
-    href: '/'
+    href: '/shop'
   },
   {
     title: 'Living',
     image: '/images/living.png',
-    href: '/'
+    href: '/shop'
   },
   {
     title: 'Bedroom',
     image: '/images/bedroom.png',
-    href: '/'
+    href: '/shop'
   }
 ]
 
