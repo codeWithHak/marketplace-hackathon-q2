@@ -31,17 +31,17 @@ const features = [
 
 export default function Cart() {
   const { cartItems, removeFromCart, updateQuantity } = useCounter()
-  const [quantities, setQuantities] = useState<{ [key: number]: number }>({})
+  const [quantities, setQuantities] = useState<{ [key: string]: number }>({}) // Changed to string keys
 
   useEffect(() => {
     const newQuantities = cartItems.reduce((acc, item) => {
       acc[item.id] = item.quantity;
       return acc;
-    }, {} as { [key: number]: number });
+    }, {} as { [key: string]: number }); // Changed to string keys
     setQuantities(newQuantities);
   }, [cartItems]);
 
-  const handleQuantityChange = (id: number, newQuantity: number) => {
+  const handleQuantityChange = (id: string, newQuantity: number) => { // Changed to accept string id
     if (newQuantity > 0) {
       updateQuantity(id, newQuantity);
       setQuantities(prev => ({ ...prev, [id]: newQuantity }));
@@ -154,12 +154,12 @@ export default function Cart() {
               </div>
             </div>
             <Link href='/checkout'>
-            <button 
-              className="w-32 text-sm md:text-base border border-black py-2 rounded"
-              disabled={cartItems.length === 0}
-            >
-              Check Out
-            </button>
+              <button 
+                className="w-32 text-sm md:text-base border border-black py-2 rounded"
+                disabled={cartItems.length === 0}
+              >
+                Check Out
+              </button>
             </Link>
           </div>
         </div>
