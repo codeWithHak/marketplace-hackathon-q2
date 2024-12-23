@@ -1,17 +1,18 @@
 import { createClient } from 'next-sanity'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+if (!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID) {
+  throw new Error('Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID')
+}
+
+if (!process.env.NEXT_PUBLIC_SANITY_DATASET) {
+  throw new Error('Missing environment variable: NEXT_PUBLIC_SANITY_DATASET')
+}
 
 export const client = createClient({
-  projectId: projectId || '',
-  dataset: dataset || '',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   apiVersion: '2023-05-03',
-  useCdn: false, // We'll set this to true in production
+  useCdn: process.env.NODE_ENV === 'production',
 })
 
-export const sanityConfig = {
-  projectId,
-  dataset,
-}
 
