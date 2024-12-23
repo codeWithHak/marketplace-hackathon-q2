@@ -3,16 +3,55 @@
 import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import {  ChevronLeft, ChevronRight } from 'lucide-react'
 import { useCounter } from '../contexts/CartCounter'
 import toast from 'react-hot-toast'
 import { urlFor } from '../../sanity/lib/image'
 import { client } from '../../sanity/lib/client'
 
+
+
+interface SanityImage {
+  _type: string;
+  asset: {
+    _ref: string;
+    _type: string;
+  };
+  alt?: string;
+  hotspot?: {
+    x: number;
+    y: number;
+    height: number;
+    width: number;
+  };
+  crop?: {
+    top: number;
+    bottom: number;
+    left: number;
+    right: number;
+  };
+}
+
+interface Product {
+  _id: string;
+  name: string;
+  image: SanityImage;  // Type for images fetched from Sanity
+  category: string;
+  price: number;
+  originalPrice?: number;
+  description: string;
+  badge?: {
+    text: string;
+    color: string;
+  };
+}
+
+
+
 interface Product {
   _id: string
   name: string
-  image: any
+  image:SanityImage
   category: string
   price: number
   originalPrice?: number
@@ -109,7 +148,7 @@ export default function ShopHeader() {
       name: product.name,
       price: product.price,
       quantity: 1,
-      image: product.image
+      image: urlFor(product.image).url()  
     })
     getCartCount()
     toast.success(`${product.name} added to cart`, {

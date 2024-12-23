@@ -10,10 +10,47 @@ import toast from 'react-hot-toast'
 import { Star, StarHalf, Minus, Plus, Facebook, Linkedin, Twitter } from 'lucide-react'
 import Link from 'next/link'
 
+
+interface SanityImage {
+  _type: string;
+  asset: {
+    _ref: string;
+    _type: string;
+  };
+  alt?: string;
+  hotspot?: {
+    x: number;
+    y: number;
+    height: number;
+    width: number;
+  };
+  crop?: {
+    top: number;
+    bottom: number;
+    left: number;
+    right: number;
+  };
+}
+
+interface Product {
+  _id: string;
+  name: string;
+  image: SanityImage;  // Type for images fetched from Sanity
+  category: string;
+  price: number;
+  originalPrice?: number;
+  description: string;
+  badge?: {
+    text: string;
+    color: string;
+  };
+}
+
+
 interface Product {
   _id: string
   name: string
-  image: any
+  image: SanityImage
   category: string
   price: number
   originalPrice?: number
