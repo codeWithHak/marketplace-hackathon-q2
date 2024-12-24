@@ -97,7 +97,7 @@ export default function ProductDetails() {
     <div className="w-[90%] sm:w-[85%] max-w-7xl mx-auto px-4 py-8 sm:py-12">
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
         {/* Left Side - Product Image */}
-        <div className="lg:w-1/2 max-h-[32rem] bg-[#FFF9F3] rounded-lg p-3 sm:p-6 flex items-start justify-center">
+        <div className="lg:w-[40%] max-h-[31rem] bg-[#FFF9F3] rounded-lg p-3 sm:p-6 flex items-start justify-center">
           <div className="relative w-full max-w-md aspect-square">
             <Image
               src={urlFor(product.image).url()}
