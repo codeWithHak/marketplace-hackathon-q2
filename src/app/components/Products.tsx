@@ -13,7 +13,7 @@ import { client } from "@/sanity/lib/client"
 interface Product {
   _id: string;
   name: string;
-  image: any;
+  image: string;
   category: string;
   price: number;
   originalPrice?: number;
