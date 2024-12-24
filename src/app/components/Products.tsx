@@ -10,47 +10,10 @@ import Link from 'next/link'
 import { urlFor } from '@/sanity/lib/image'
 import { client } from "@/sanity/lib/client"
 
-
-interface SanityImage {
-  _type: string;
-  asset: {
-    _ref: string;
-    _type: string;
-  };
-  alt?: string;
-  hotspot?: {
-    x: number;
-    y: number;
-    height: number;
-    width: number;
-  };
-  crop?: {
-    top: number;
-    bottom: number;
-    left: number;
-    right: number;
-  };
-}
-
 interface Product {
   _id: string;
   name: string;
-  image: SanityImage;  // Type for images fetched from Sanity
-  category: string;
-  price: number;
-  originalPrice?: number;
-  description: string;
-  badge?: {
-    text: string;
-    color: string;
-  };
-}
-
-
-interface Product {
-  _id: string;
-  name: string;
-  image: SanityImage;
+  image: any;
   category: string;
   price: number;
   originalPrice?: number;
@@ -65,17 +28,21 @@ export default function Products() {
   const [products, setProducts] = useState<Product[]>([])
   const [scrollPosition, setScrollPosition] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const { addToCart, getCartCount } = useCounter()
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        console.log('Fetching products...')
         const query = '*[_type == "product"]'
         const fetchedProducts = await client.fetch(query)
+        console.log('Fetched products:', fetchedProducts)
         setProducts(fetchedProducts)
       } catch (error) {
         console.error('Error fetching products:', error)
+        setError('Failed to fetch products. Please try again later.')
       } finally {
         setLoading(false)
       }
@@ -119,7 +86,7 @@ export default function Products() {
       name: product.name,
       price: product.price,
       quantity: 1,
-      image: urlFor(product.image).url()  
+      image: urlFor(product.image).url()  // Convert Sanity image to URL
     })
     getCartCount()
     toast.success(`${product.name} added to cart`, {
@@ -131,7 +98,15 @@ export default function Products() {
   }
 
   if (loading) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>
+    return <div className="flex justify-center items-center h-screen">Loading products...</div>
+  }
+
+  if (error) {
+    return <div className="flex justify-center items-center h-screen text-red-500">{error}</div>
+  }
+
+  if (products.length === 0) {
+    return <div className="flex justify-center items-center h-screen">No products found.</div>
   }
 
   return (
