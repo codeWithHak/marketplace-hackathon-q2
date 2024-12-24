@@ -10,7 +10,6 @@ import toast from 'react-hot-toast'
 import { Star, StarHalf, Minus, Plus, Facebook, Linkedin, Twitter } from 'lucide-react'
 import Link from 'next/link'
 
-
 interface SanityImage {
   _type: string;
   asset: {
@@ -35,7 +34,7 @@ interface SanityImage {
 interface Product {
   _id: string;
   name: string;
-  image: SanityImage;  // Type for images fetched from Sanity
+  image: SanityImage;
   category: string;
   price: number;
   originalPrice?: number;
@@ -44,21 +43,6 @@ interface Product {
     text: string;
     color: string;
   };
-}
-
-
-interface Product {
-  _id: string
-  name: string
-  image: SanityImage
-  category: string
-  price: number
-  originalPrice?: number
-  description: string
-  badge?: {
-    text: string
-    color: string
-  }
 }
 
 export default function ProductDetails() {
@@ -88,7 +72,7 @@ export default function ProductDetails() {
         image: urlFor(product.image).url()  
       })
       getCartCount()
-      toast.success(`${product.name} added to cart`, {
+      toast.success(`${quantity} ${product.name}${quantity > 1 ? 's' : ''} added to cart`, {
         style: {
           background: '#B88E2F',
           color: '#fff',
@@ -110,50 +94,52 @@ export default function ProductDetails() {
   }
 
   return (
-    <div className="w-[85%] max-w-7xl mx-auto px-4 py-12">
-      <div className="flex flex-col lg:flex-row gap-12">
+    <div className="w-[90%] sm:w-[85%] max-w-7xl mx-auto px-4 py-8 sm:py-12">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
         {/* Left Side - Product Image */}
-        <div className="lg:w-1/2 bg-[#FFF9F3] rounded-lg p-8">
-          <Image
-            src={urlFor(product.image).url()}
-            alt={product.name}
-            width={600}
-            height={600}
-            className="w-full h-auto object-cover"
-          />
+        <div className="lg:w-1/2 max-h-[32rem] bg-[#FFF9F3] rounded-lg p-3 sm:p-6 flex items-start justify-center">
+          <div className="relative w-full max-w-md aspect-square">
+            <Image
+              src={urlFor(product.image).url()}
+              alt={product.name}
+              layout="fill"
+              objectFit="contain"
+              className="rounded-lg"
+            />
+          </div>
         </div>
 
         {/* Right Side - Product Details */}
         <div className="lg:w-1/2">
-          <h1 className="text-4xl font-medium mb-6">{product.name}</h1>
-          <p className="text-3xl font-medium mb-6">Rs. {product.price.toLocaleString()}.00</p>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium mb-4 sm:mb-6">{product.name}</h1>
+          <p className="text-xl sm:text-2xl lg:text-3xl font-medium mb-4 sm:mb-6">Rs. {product.price.toLocaleString()}.00</p>
           
           {/* Rating */}
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
             <div className="flex items-center text-yellow-400">
-              <Star className="fill-current" size={20} />
-              <Star className="fill-current" size={20} />
-              <Star className="fill-current" size={20} />
-              <Star className="fill-current" size={20} />
-              <StarHalf className="fill-current" size={20} />
+              <Star className="fill-current w-4 h-4 sm:w-5 sm:h-5" />
+              <Star className="fill-current w-4 h-4 sm:w-5 sm:h-5" />
+              <Star className="fill-current w-4 h-4 sm:w-5 sm:h-5" />
+              <Star className="fill-current w-4 h-4 sm:w-5 sm:h-5" />
+              <StarHalf className="fill-current w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <span className="text-gray-600">5 Customer Review</span>
+            <span className="text-gray-600 text-sm sm:text-base">5 Customer Review</span>
           </div>
 
           {/* Description */}
-          <p className="text-gray-600 mb-8 leading-relaxed">
+          <p className="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
             {product.description}
           </p>
 
           {/* Size Selection */}
-          <div className="mb-6">
-            <h3 className="text-lg mb-3">Size</h3>
-            <div className="flex gap-4">
+          <div className="mb-4 sm:mb-6">
+            <h3 className="text-base sm:text-lg mb-2 sm:mb-3">Size</h3>
+            <div className="flex gap-2 sm:gap-4">
               {['L', 'XL', 'XS'].map((size) => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
-                  className={`w-12 h-12 flex items-center justify-center rounded-lg transition-colors
+                  className={`w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-lg transition-colors text-sm sm:text-base
                     ${selectedSize === size 
                       ? 'bg-[#B88E2F] text-white' 
                       : 'bg-[#F9F1E7] hover:bg-[#B88E2F] hover:text-white'
@@ -166,9 +152,9 @@ export default function ProductDetails() {
           </div>
 
           {/* Color Selection */}
-          <div className="mb-8">
-            <h3 className="text-lg mb-3">Color</h3>
-            <div className="flex gap-4">
+          <div className="mb-6 sm:mb-8">
+            <h3 className="text-base sm:text-lg mb-2 sm:mb-3">Color</h3>
+            <div className="flex gap-2 sm:gap-4">
               {[
                 { name: 'purple', class: 'bg-purple-500' },
                 { name: 'black', class: 'bg-black' },
@@ -177,7 +163,7 @@ export default function ProductDetails() {
                 <button
                   key={color.name}
                   onClick={() => setSelectedColor(color.name)}
-                  className={`w-8 h-8 rounded-full ${color.class} transition-transform
+                  className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full ${color.class} transition-transform
                     ${selectedColor === color.name ? 'scale-125 ring-2 ring-offset-2 ring-gray-300' : ''}
                   `}
                 />
@@ -186,56 +172,55 @@ export default function ProductDetails() {
           </div>
 
           {/* Quantity and Actions */}
-          <div className="flex gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 mb-6 sm:mb-8">
             <div className="flex items-center border rounded-lg">
               <button 
                 onClick={() => handleQuantityChange('decrease')}
-                className="px-4 py-2 hover:bg-gray-100"
+                className="px-3 sm:px-4 py-2 hover:bg-gray-100"
               >
-                <Minus size={20} />
+                <Minus size={16} className="sm:w-5 sm:h-5" />
               </button>
-              <span className="px-6 py-2">{quantity}</span>
+              <span className="px-4 sm:px-6 py-2 text-sm sm:text-base">{quantity}</span>
               <button 
                 onClick={() => handleQuantityChange('increase')}
-                className="px-4 py-2 hover:bg-gray-100"
+                className="px-3 sm:px-4 py-2 hover:bg-gray-100"
               >
-                <Plus size={20} />
+                <Plus size={16} className="sm:w-5 sm:h-5" />
               </button>
             </div>
             <button 
               onClick={handleAddToCart}
-              className="px-8 py-2 bg-white border-2 border-[#B88E2F] text-[#B88E2F] hover:bg-[#B88E2F] hover:text-white transition-colors rounded-lg"
+              className="px-6 sm:px-8 py-2 bg-white border-2 border-[#B88E2F] text-[#B88E2F] hover:bg-[#B88E2F] hover:text-white transition-colors rounded-lg text-sm sm:text-base"
             >
               Add To Cart
             </button>
-            
           </div>
 
           {/* Product Meta */}
-          <div className="border-t pt-6 space-y-4 text-gray-600">
-            <div className="flex gap-8">
-              <span className="w-24">SKU</span>
+          <div className="border-t pt-4 sm:pt-6 space-y-2 sm:space-y-4 text-gray-600 text-sm sm:text-base">
+            <div className="flex gap-4 sm:gap-8">
+              <span className="w-20 sm:w-24">SKU</span>
               <span>: SS001</span>
             </div>
-            <div className="flex gap-8">
-              <span className="w-24">Category</span>
+            <div className="flex gap-4 sm:gap-8">
+              <span className="w-20 sm:w-24">Category</span>
               <span>: {product.category}</span>
             </div>
-            <div className="flex gap-8">
-              <span className="w-24">Tags</span>
+            <div className="flex gap-4 sm:gap-8">
+              <span className="w-20 sm:w-24">Tags</span>
               <span>: Sofa, Chair, Home, Shop</span>
             </div>
-            <div className="flex gap-8">
-              <span className="w-24">Share</span>
+            <div className="flex gap-4 sm:gap-8">
+              <span className="w-20 sm:w-24">Share</span>
               <div className="flex gap-4">
                 <Link href="#" className="hover:text-[#B88E2F]">
-                  <Facebook size={20} />
+                  <Facebook size={16} className="sm:w-5 sm:h-5" />
                 </Link>
                 <Link href="#" className="hover:text-[#B88E2F]">
-                  <Linkedin size={20} />
+                  <Linkedin size={16} className="sm:w-5 sm:h-5" />
                 </Link>
                 <Link href="#" className="hover:text-[#B88E2F]">
-                  <Twitter size={20} />
+                  <Twitter size={16} className="sm:w-5 sm:h-5" />
                 </Link>
               </div>
             </div>
